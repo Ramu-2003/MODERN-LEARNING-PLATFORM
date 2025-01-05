@@ -96,6 +96,31 @@
             .side-nav a:hover {
                 background-color: rgba(59, 130, 246, 0.5);
             }
+
+            /* Reset all font settings */
+* {
+    font-family: initial;
+}
+
+/* Clear any existing font-family declarations */
+[style*="font-family"] {
+    font-family: initial !important;
+}
+
+/* Apply new font */
+body {
+    font-family: "Comic Sans MS", cursive;
+}
+
+/* Ensure all elements inherit the font except code blocks */
+* :not(pre):not(code) {
+    font-family: inherit;
+}
+
+/* Keep code blocks in monospace */
+pre, code {
+    font-family: "Fira Code", monospace;
+}
         </style>
          
     </head>
