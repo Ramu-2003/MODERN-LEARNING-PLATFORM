@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>Modern Learning Platform</title>
     <!-- Add Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -504,6 +506,85 @@
         }
     }
     
+    /* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+    /* Navigation fixes */
+    .nav-tabs {
+        padding: 0.8rem;
+    }
+    
+    .nav-tabs ul {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .nav-tabs a {
+        padding: 0.6rem 1rem;
+        justify-content: flex-start;
+    }
+
+    /* Content adjustments */
+    .tab-content {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    /* Typography scaling */
+    h1 {
+        font-size: 1.8rem !important;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    pre {
+        font-size: 14px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        padding: 0.5rem;
+    }
+
+    /* Button adjustments */
+    .btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+    }
+
+    /* Theme toggle repositioning */
+    .theme-toggle {
+        bottom: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Additional tablet styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .nav-tabs ul {
+        gap: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .nav-tabs a, .btn {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-tabs a:active, .btn:active {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
     </style>
 
 </head>
@@ -575,7 +656,7 @@ I hope this helps! Let me know if you'd like help with descriptions for the othe
     }
 </script>
 
-<!-- Place this in your `<head>` section -->
+<!-- Place this in your <head> section -->
     <script>
         document.addEventListener("keydown", function (e) {
           if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
@@ -586,7 +667,7 @@ I hope this helps! Let me know if you'd like help with descriptions for the othe
         });
       </script>
       
-      <!-- Place this in your `<head>` section -->
+      <!-- Place this in your <head> section -->
 <script>
     document.addEventListener("contextmenu", function (e) {
       e.preventDefault();
@@ -665,6 +746,27 @@ I hope this helps! Let me know if you'd like help with descriptions for the othe
             card.style.background = 'var(--card-bg)';
         });
     });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+    // Handle mobile menu interactions
+    const navLinks = document.querySelectorAll('.nav-tabs a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                // Close menu after clicking (if you have a mobile menu)
+                const nav = this.closest('.nav-tabs');
+                nav.classList.remove('active');
+            }
+        });
+    });
+
+    // Add touch feedback
+    document.addEventListener('touchstart', function() {}, {passive: true});
+});
+
+    
+    
     </script>
 </body>
 </html>
