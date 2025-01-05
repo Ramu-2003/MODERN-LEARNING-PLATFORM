@@ -1,0 +1,4400 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML-IN-MY-STYLE</title>
+        
+        <!-- External Resources -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        
+        <!-- Code Block Styles -->
+        <style>
+            pre {
+                font-family: "Fira Code", monospace;
+                background-color: #1e293b;
+                color: #e2e8f0;
+                padding: 15px;
+                border-radius: 8px;
+                overflow-x: auto;
+            }
+        </style>
+        
+        <!-- Card Styles -->
+        <style>
+            .card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+        
+        <!-- Navigation Styles -->
+        <style>
+            body {
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                margin-right: 0;
+                transition: margin-right 0.3s ease;
+            }
+
+            body.nav-open {
+                margin-right: 200px;
+            }
+
+            .nav-toggle {
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 60;
+                background: white;
+                border: none;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+            }
+
+            .nav-toggle:hover {
+                background: #f3f4f6;
+            }
+
+            .side-nav {
+                position: fixed;
+                right: -200px;
+                top: 0;
+                bottom: 0;
+                width: 200px;
+                background-color: rgba(31, 41, 55, 0.95);
+                backdrop-filter: blur(5px);
+                overflow-y: auto;
+                padding: 1rem;
+                z-index: 50;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                transition: right 0.3s ease;
+            }
+
+            .side-nav.open {
+                right: 0;
+            }
+
+            .side-nav a {
+                color: white;
+                text-decoration: none;
+                padding: 0.5rem;
+                display: block;
+                transition: all 0.3s ease;
+                border-radius: 0.25rem;
+            }
+
+            .side-nav a:hover {
+                background-color: rgba(59, 130, 246, 0.5);
+            }
+        </style>
+         
+    </head>
+    
+    <body class="bg-gray-50 text-gray-800 flex flex-col items-center min-h-screen">
+        <!-- Navigation Toggle Button -->
+        <button class="nav-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M4 6h16M4 12h16m-7 6h7">
+                </path>
+            </svg>
+        </button>
+
+        <!-- Side Navigation -->
+        <nav class="side-nav">
+            <div class="text-xl font-bold text-white mb-4">HTML Tags</div>
+            <a href="#a">A</a>
+            <a href="#abbr">Abbr</a>
+            <a href="#address">Address</a>
+            <a href="#article">Article</a>
+            <a href="#aside">Aside</a>
+            <a href="#audio">Audio</a>
+            <a href="#b">B</a>
+            <a href="#base">Base</a>
+            <a href="#bdi">BDI</a>
+            <a href="#bdo">BDO</a>
+            <a href="#blockquote">Blockquote</a>
+            <a href="#button">button</a>
+            <a href="#canvas">Canvas</a>
+            <a href="#cite">Cite</a>
+            <a href="#code">Code</a>
+            <a href="#data">data</a>
+            <a href="#datalist">datalist</a>
+            <a href="#del">Del</a>
+            <a href="#details">Details</a>
+            <a href="#dfn">DFN</a>
+            <a href="#dialog">Dialog</a>
+            <a href="#div">div</a>
+            <a href="#em">Em</a>
+            <a href="#embed">Embed</a>
+            <a href="#fieldset">Fieldset</a>
+            <a href="#figure">Figure</a>
+            <a href="#footer">Footer</a>
+            <a href="#form">Form</a>
+            <a href="#header">Header</a>
+            <a href="#hr">hr</a>
+            <a href="#i">I</a>
+            <a href="#iframe">IFrame</a>
+            <a href="#img">Img</a>
+            <a href="#input">input</a>
+            <a href="#ins">Ins</a>
+            <a href="#kbd">Kbd</a>
+            <a href="#label">label</a>
+            <a href="#legend">legend</a>
+            <a href="#link">link</a>
+            <a href="#main">Main</a>
+            <a href="#map">Map</a>
+            <a href="#mark">Mark</a>
+            <a href="#meta">Meta</a>
+            <a href="#meter">Meter</a>
+            <a href="#nav">Nav</a>
+            <a href="#noscript">Noscript</a>
+            <a href="#object">Object</a>
+            <a href="#ol">OL</a>
+            <a href="#optgroup">Optgroup</a>
+            <a href="#output">output</a>
+            <a href="#p">P</a>
+            <a href="#param">param</a>
+            <a href="#picture">Picture</a>
+            <a href="#pre">Pre</a>
+            <a href="#progress">Progress</a>
+            <a href="#q">Q</a>
+            <a href="#ruby">Ruby</a>
+            <a href="#samp">Samp</a>
+            <a href="#script">script</a>
+            <a href="#section">Section</a>
+            <a href="#select">Select</a>
+            <a href="#small">Small</a>
+            <a href="#source">source</a>
+            <a href="#span">Span</a>
+            <a href="#strong">Strong</a>
+            <a href="#style">style</a>
+            <a href="#sub">Sub</a>
+            <a href="#summary">summary</a>
+            <a href="#sup">Sup</a>
+            <a href="#table">Table</a>
+            <a href="#template">Template</a>
+            <a href="#tbody">tbody</a>
+            <a href="#td">td</a>
+            <a href="#textarea">Textarea</a>
+            <a href="#tfoot">tfoot</a>
+            <a href="#th">th</a>
+            <a href="#time">Time</a>
+            <a href="#title">title</a>
+            <a href="#tr">tr</a>
+            <a href="#track">Track</a>
+            <a href="#u">u</a>
+            <a href="#ul">ul</a>
+            <a href="#var">Var</a>
+            <a href="#video">Video</a>
+            <a href="#wbr">Wbr</a>
+        </nav>
+
+        <!-- Header -->
+        <header class="bg-blue-600 text-white w-full py-4 shadow-md">
+            <h1 class="text-2xl font-bold text-center">HTML IN MY STYLE</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Example cards for each HTML element -->
+            <div id="a" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+                <div class="bg-red-100 p-4">
+                    <p class="text-sm font-semibold text-red-800">
+                        The &lt;a&gt; tag defines a hyperlink.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+                    <!-- Code Block -->
+                    <div>
+                        <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (a tag):</h2>
+                        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Link Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;a href="https://www.example.com"&gt;Visit Example Website&lt;/a&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </pre>
+                    </div>
+                    
+                    <!-- Output Block -->
+                    <div>
+                        <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+                        <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                            <a href="https://www.example.com" class="text-blue-500 underline">
+                                Visit Example Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional element cards follow the same pattern -->
+            <!-- Example Card for Abbreviation -->
+<div id="abbr" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;abbr&gt; tag defines an abbreviation or acronym.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (abbr tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Abbreviation Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;The &lt;abbr title="World Health Organization"&gt;WHO&lt;/abbr&gt; 
+           was founded in 1948.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <p>The <abbr title="World Health Organization" class="underline dotted">WHO</abbr> 
+                   was founded in 1948.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Address -->
+<div id="address" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-gray-100 p-4">
+        <p class="text-sm font-semibold text-gray-800">
+            The &lt;address&gt; tag defines contact information for the author/owner of a document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (address tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Address Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;address&gt;
+            Written by BLANK&lt;br&gt;
+            Visit us at:&lt;br&gt;
+            Example.com&lt;br&gt;
+            Box 69, SYDNEY&lt;br&gt;
+            UK
+        &lt;/address&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <address>
+                    Written by BLANK<br>
+                    Visit us at:<br>
+                    Example.com<br>
+                    Box 69, SYDNEY<br>
+                    UK
+                </address>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Article -->
+<div id="article" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;article&gt; tag specifies independent, self-contained content.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (article tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Article Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Article Title&lt;/h2&gt;
+            &lt;p&gt;This is the content of the article.&lt;/p&gt;
+            &lt;p&gt;Published on December 28, 2024&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <article class="border p-4 rounded">
+                    <h2 class="text-xl font-bold">Article Title</h2>
+                    <p>This is the content of the article.</p>
+                    <p class="text-sm text-gray-600">Published on December 28, 2024</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Aside -->
+<div id="aside" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-pink-100 p-4">
+        <p class="text-sm font-semibold text-pink-800">
+            The &lt;aside&gt; tag defines content aside from the page content.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (aside tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Aside Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Main content here.&lt;/p&gt;
+        &lt;aside&gt;
+            &lt;h4&gt;Sidebar&lt;/h4&gt;
+            &lt;p&gt;This is additional information.&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="flex gap-4">
+                    <p>Main content here.</p>
+                    <aside class="bg-gray-200 p-2 rounded">
+                        <h4 class="font-bold">Sidebar</h4>
+                        <p>This is additional information.</p>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Audio -->
+<div id="audio" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;audio&gt; tag defines sound content.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (audio tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Audio Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;audio controls&gt;
+            &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+            &lt;source src="audio.ogg" type="audio/ogg"&gt;
+            Your browser does not support the audio element.
+        &lt;/audio&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="border border-gray-300 p-4 rounded">
+                    [Audio Player Would Appear Here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Bold Text -->
+<div id="b" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;b&gt; tag specifies bold text.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (b tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Bold Text Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This is &lt;b&gt;bold text&lt;/b&gt;.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <p>This is <b>bold text</b>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Base -->
+<div id="base" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;base&gt; tag specifies the base URL for all relative URLs in a document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (base tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;base href="https://www.example.com/images/"&gt;
+        &lt;title&gt;Base Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;img src="picture.jpg" alt="My Picture"&gt;
+        &lt;!-- Will look for picture at https://www.example.com/images/picture.jpg --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <p class="text-center">
+                    Base tag affects relative URLs in the document<br>
+                    (No visible output - affects URL resolution)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for BDI -->
+<div id="bdi" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;bdi&gt; tag isolates text that might be formatted in a different direction.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (bdi tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;BDI Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;User &lt;bdi&gt;Joe&lt;/bdi&gt;: 90 points&lt;/p&gt;
+        &lt;p&gt;User &lt;bdi&gt;John&lt;/bdi&gt;: 80 points&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div>
+                    <p>User <bdi>joe</bdi>: 90 points</p>
+                    <p>User <bdi>John</bdi>: 80 points</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for BDO -->
+<div id="bdo" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;bdo&gt; tag overrides the current text direction.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (bdo tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;BDO Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Normal text&lt;/p&gt;
+        &lt;p&gt;&lt;bdo dir="rtl"&gt;This text will go right to left&lt;/bdo&gt;&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div>
+                    <p>Normal text</p>
+                    <p><bdo dir="rtl">This text will go right to left</bdo></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Blockquote -->
+<div id="blockquote" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-gray-100 p-4">
+        <p class="text-sm font-semibold text-gray-800">
+            The &lt;blockquote&gt; tag specifies a section that is quoted from another source.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (blockquote tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Blockquote Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;blockquote cite="http://www.example.com"&gt;
+            This is a long quotation that needs to be set apart from other content.
+        &lt;/blockquote&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <blockquote class="border-l-4 border-gray-300 pl-4 italic">
+                    This is a long quotation that needs to be set apart from other content.
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Button -->
+<div id="button" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;button&gt; tag defines a clickable button.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (button tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Button Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button type="button"&gt;Click Me!&lt;/button&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+        &lt;button type="reset"&gt;Reset&lt;/button&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64 space-y-2">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Click Me!
+                </button>
+                <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                    Submit
+                </button>
+                <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Canvas -->
+<div id="canvas" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;canvas&gt; tag is used to draw graphics via JavaScript.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (canvas tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Canvas Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;canvas id="myCanvas" width="200" height="100" 
+                style="border:1px solid #000;"&gt;
+            Your browser does not support the canvas element.
+        &lt;/canvas&gt;
+        &lt;script&gt;
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(10, 10, 150, 75);
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <canvas id="myCanvas" width="200" height="100" 
+                        style="border:1px solid #000; background-color: white;">
+                    <div style="background-color: #FF0000; width: 150px; height: 75px; margin: 10px;">
+                    </div>
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Cite -->
+<div id="cite" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;cite&gt; tag defines the title of a creative work.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (cite tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Cite Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;My favorite book is 
+           &lt;cite&gt;The Great Gatsby&lt;/cite&gt; 
+           by F. Scott Fitzgerald.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <p>My favorite book is 
+                   <cite class="italic">The Great Gatsby</cite> 
+                   by F. Scott Fitzgerald.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Code -->
+<div id="code" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;code&gt; tag defines a piece of computer code.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (code tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Code Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;The &lt;code&gt;print()&lt;/code&gt; function outputs text.&lt;/p&gt;
+        &lt;code&gt;
+            x = 5;
+            y = 6;
+            z = x + y;
+        &lt;/code&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>The <code class="bg-gray-200 px-1 rounded font-mono">print()</code> function outputs text.</p>
+                <code class="block bg-gray-200 p-2 rounded mt-4 font-mono">
+                    x = 5;
+                    y = 6;
+                    z = x + y;
+                </code>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Data -->
+<div id="data" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;data&gt; tag links content with a machine-readable translation.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (data tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Data Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;New Products:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;data value="398"&gt;Mini Dress&lt;/data&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;data value="399"&gt;Maxi Dress&lt;/data&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div>
+                    <p>New Products:</p>
+                    <ul class="list-disc pl-5">
+                        <li><data value="398">Mini Dress</data></li>
+                        <li><data value="399">Maxi Dress</data></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Datalist -->
+<div id="datalist" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;datalist&gt; tag specifies a list of pre-defined options for an input element.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (datalist tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Datalist Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;label for="browser"&gt;Choose your browser:&lt;/label&gt;
+        &lt;input list="browsers" id="browser" name="browser"&gt;
+        
+        &lt;datalist id="browsers"&gt;
+            &lt;option value="Chrome"&gt;
+            &lt;option value="Firefox"&gt;
+            &lt;option value="Safari"&gt;
+            &lt;option value="Edge"&gt;
+            &lt;option value="Opera"&gt;
+        &lt;/datalist&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div>
+                    <label for="browser">Choose your browser:</label>
+                    <input list="browsers" id="browser" name="browser" 
+                           class="border rounded px-2 py-1 ml-2">
+                    <datalist id="browsers">
+                        <option value="Chrome">
+                        <option value="Firefox">
+                        <option value="Safari">
+                        <option value="Edge">
+                        <option value="Opera">
+                    </datalist>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Del -->
+<div id="del" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-red-100 p-4">
+        <p class="text-sm font-semibold text-red-800">
+            The &lt;del&gt; tag defines text that has been deleted from a document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (del tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Deleted Text Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;My favorite color is &lt;del&gt;blue&lt;/del&gt; red.&lt;/p&gt;
+        &lt;p&gt;Price: &lt;del&gt;USD 50&lt;/del&gt; USD 40&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>My favorite color is <del>blue</del> red.</p>
+                <p>Price: <del>USD 50</del> USD 40</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Details -->
+<div id="details" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;details&gt; tag creates an interactive widget that can be opened or closed.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (details tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Details Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;details&gt;
+            &lt;summary&gt;Click to view more information&lt;/summary&gt;
+            &lt;p&gt;This is additional information that can be 
+               hidden or shown.&lt;/p&gt;
+        &lt;/details&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <details>
+                    <summary class="cursor-pointer">Click to view more information</summary>
+                    <p class="mt-2">This is additional information that can be hidden or shown.</p>
+                </details>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Definition -->
+<div id="dfn" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;dfn&gt; tag represents a defining instance of a term.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (dfn tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Definition Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;
+            A &lt;dfn&gt;variable&lt;/dfn&gt; is a container for 
+            storing data values.
+        &lt;/p&gt;
+        
+        &lt;p&gt;
+            &lt;dfn title="HyperText Markup Language"&gt;HTML&lt;/dfn&gt; 
+            is the standard markup language for creating web pages.
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>
+                    A <dfn>variable</dfn> is a container for storing data values.
+                </p>
+                <p>
+                    <dfn title="HyperText Markup Language">HTML</dfn> 
+                    is the standard markup language for creating web pages.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Dialog -->
+<div id="dialog" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;dialog&gt; tag defines a dialog box or window.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (dialog tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Dialog Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;dialog open&gt;
+            &lt;p&gt;This is an open dialog window&lt;/p&gt;
+            &lt;button&gt;Close&lt;/button&gt;
+        &lt;/dialog&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="border rounded-lg p-4 bg-white shadow-lg">
+                    <p>This is an open dialog window</p>
+                    <button class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Div -->
+<div id="div" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;div&gt; tag defines a division or section in an HTML document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (div tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Div Example&lt;/title&gt;
+        &lt;style&gt;
+            .myDiv {
+                border: 2px solid blue;
+                padding: 10px;
+                margin: 5px;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="myDiv"&gt;
+            &lt;h2&gt;This is a heading in a div&lt;/h2&gt;
+            &lt;p&gt;This is some text in a div.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="border-2 border-blue-500 p-4 rounded">
+                    <h2 class="text-xl font-bold">This is a heading in a div</h2>
+                    <p>This is some text in a div.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Em (Emphasis) -->
+<div id="em" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;em&gt; tag defines emphasized text.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (em tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Emphasis Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This is &lt;em&gt;very&lt;/em&gt; important text.&lt;/p&gt;
+        &lt;p&gt;Please &lt;em&gt;do not&lt;/em&gt; forget to submit.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>This is <em>very</em> important text.</p>
+                <p>Please <em>do not</em> forget to submit.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Embed -->
+<div id="embed" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;embed&gt; tag defines a container for external content or plugin.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (embed tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Embed Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;embed 
+            src="example.pdf" 
+            type="application/pdf"
+            width="300"
+            height="200"&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="border border-gray-300 p-4 text-center">
+                    [Embedded PDF would appear here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Fieldset -->
+<div id="fieldset" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;fieldset&gt; tag groups related form elements.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (fieldset tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Fieldset Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form&gt;
+            &lt;fieldset&gt;
+                &lt;legend&gt;Personal Information&lt;/legend&gt;
+                &lt;label for="name"&gt;Name:&lt;/label&gt;
+                &lt;input type="text" id="name"&gt;&lt;br&gt;
+                &lt;label for="email"&gt;Email:&lt;/label&gt;
+                &lt;input type="email" id="email"&gt;
+            &lt;/fieldset&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <form>
+                    <fieldset class="border p-4 rounded">
+                        <legend class="px-2">Personal Information</legend>
+                        <div class="space-y-2">
+                            <div>
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" class="border rounded px-2 py-1 ml-2">
+                            </div>
+                            <div>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" class="border rounded px-2 py-1 ml-2">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Figure -->
+<div id="figure" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;figure&gt; tag specifies self-contained content, like illustrations, diagrams, photos, etc.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (figure tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Figure Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;figure&gt;
+            &lt;img src="image.jpg" alt="Sample Image"&gt;
+            &lt;figcaption&gt;Fig.1 - Sample Image Description&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <figure>
+                    <div class="bg-gray-300 w-32 h-32 flex items-center justify-center">
+                        [Image]
+                    </div>
+                    <figcaption class="text-center mt-2">
+                        Fig.1 - Sample Image Description
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Footer -->
+<div id="footer" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;footer&gt; tag defines a footer for a document or section.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (footer tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Footer Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;footer&gt;
+            &lt;p&gt;Author: BLANK&lt;/p&gt;
+            &lt;p&gt;&copy; Modern learning platform&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <footer class="bg-gray-800 text-white p-4 w-full text-center">
+                    <p>Author: BLANK</p>
+                    <p>© Modern learning platform</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Form -->
+<div id="form" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-pink-100 p-4">
+        <p class="text-sm font-semibold text-pink-800">
+            The &lt;form&gt; tag creates an HTML form for user input.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (form tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Form Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form action="/submit" method="post"&gt;
+            &lt;label for="username"&gt;Username:&lt;/label&gt;
+            &lt;input type="text" id="username" name="username"&gt;&lt;br&gt;
+            
+            &lt;label for="password"&gt;Password:&lt;/label&gt;
+            &lt;input type="password" id="password" name="password"&gt;&lt;br&gt;
+            
+            &lt;input type="submit" value="Submit"&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <form class="space-y-4">
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" 
+                               class="border rounded px-2 py-1 ml-2">
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" 
+                               class="border rounded px-2 py-1 ml-2">
+                    </div>
+                    <input type="submit" value="Submit" 
+                           class="bg-blue-500 text-white px-4 py-2 rounded">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Header -->
+<div id="header" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;header&gt; tag defines a header for a document or section.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (header tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Header Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+            &lt;nav&gt;
+                &lt;a href="#home"&gt;Home&lt;/a&gt; |
+                &lt;a href="#about"&gt;About&lt;/a&gt; |
+                &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <header class="bg-gray-800 text-white p-4 w-full text-center">
+                    <h1 class="text-2xl font-bold">Welcome to My Website</h1>
+                    <nav class="mt-2">
+                        <a href="#home" class="text-blue-300">Home</a> |
+                        <a href="#about" class="text-blue-300">About</a> |
+                        <a href="#contact" class="text-blue-300">Contact</a>
+                    </nav>
+                </header>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Horizontal Rule -->
+<div id="hr" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-gray-100 p-4">
+        <p class="text-sm font-semibold text-gray-800">
+            The &lt;hr&gt; tag creates a horizontal line to divide content.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (hr tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Horizontal Rule Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Text above the line&lt;/p&gt;
+        &lt;hr&gt;
+        &lt;p&gt;Text below the line&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>Text above the line</p>
+                <hr class="w-full my-4 border-t border-gray-300">
+                <p>Text below the line</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Italic Text -->
+<div id="i" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;i&gt; tag defines text in an alternate voice or mood.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (i tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Italic Text Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Normal text and &lt;i&gt;italic text&lt;/i&gt;.&lt;/p&gt;
+        &lt;p&gt;&lt;i&gt;Technical terms&lt;/i&gt; are often italicized.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>Normal text and <i>italic text</i>.</p>
+                <p><i>Technical terms</i> are often italicized.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for IFrame -->
+<div id="iframe" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;iframe&gt; tag defines an inline frame for embedding another document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (iframe tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;IFrame Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;iframe 
+            src="https://www.example.com" 
+            width="300" 
+            height="200" 
+            title="Example Website"&gt;
+        &lt;/iframe&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="border border-gray-300 w-[300px] h-[200px] flex items-center justify-center">
+                    [Embedded content would appear here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Image -->
+<div id="img" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-teal-100 p-4">
+        <p class="text-sm font-semibold text-teal-800">
+            The &lt;img&gt; tag embeds an image in the document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (img tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Image Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;img 
+            src="example.jpg" 
+            alt="Example Image"
+            width="300"
+            height="200"&gt;
+        
+        &lt;img 
+            src="responsive.jpg" 
+            alt="Responsive Image"
+            style="max-width: 100%; height: auto;"&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64 space-y-4">
+                <div class="bg-gray-300 w-[300px] h-[200px] flex items-center justify-center">
+                    [Fixed Size Image]
+                </div>
+                <div class="bg-gray-300 w-full h-32 flex items-center justify-center">
+                    [Responsive Image]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Input -->
+<div id="input" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;input&gt; tag specifies an input field where the user can enter data.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (input tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Input Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form&gt;
+            &lt;input type="text" placeholder="Text input"&gt;&lt;br&gt;
+            &lt;input type="password" placeholder="Password"&gt;&lt;br&gt;
+            &lt;input type="checkbox"&gt; Checkbox&lt;br&gt;
+            &lt;input type="radio" name="option"&gt; Radio&lt;br&gt;
+            &lt;input type="date"&gt;&lt;br&gt;
+            &lt;input type="color"&gt;&lt;br&gt;
+            &lt;input type="submit" value="Submit"&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <form class="space-y-2">
+                    <input type="text" placeholder="Text input" class="border rounded px-2 py-1"><br>
+                    <input type="password" placeholder="Password" class="border rounded px-2 py-1"><br>
+                    <div><input type="checkbox"> Checkbox</div>
+                    <div><input type="radio" name="option"> Radio</div>
+                    <input type="date" class="border rounded px-2 py-1"><br>
+                    <input type="color"><br>
+                    <input type="submit" value="Submit" class="bg-blue-500 text-white px-4 py-1 rounded">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Insert -->
+<div id="ins" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;ins&gt; tag defines text that has been inserted into a document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (ins tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Insert Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;
+            My favorite color is &lt;del&gt;blue&lt;/del&gt; 
+            &lt;ins&gt;green&lt;/ins&gt;.
+        &lt;/p&gt;
+        
+        &lt;p&gt;
+            Price: &lt;del&gt;USD 50&lt;/del&gt; 
+            &lt;ins datetime="2024-12-29"&gt;USD 45&lt;/ins&gt;
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>
+                    My favorite color is <del>blue</del> 
+                    <ins>green</ins>.
+                </p>
+                <p>
+                    Price: <del>USD 50</del> 
+                    <ins datetime="2024-12-29">USD 45</ins>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Keyboard Input -->
+<div id="kbd" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;kbd&gt; tag defines keyboard input.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (kbd tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Keyboard Input Example&lt;/title&gt;
+        &lt;style&gt;
+            kbd {
+                background-color: #eee;
+                border-radius: 3px;
+                border: 1px solid #b4b4b4;
+                padding: 2px 4px;
+                font-family: monospace;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Save: Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;&lt;/p&gt;
+        &lt;p&gt;Undo: Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;Z&lt;/kbd&gt;&lt;/p&gt;
+        &lt;p&gt;To exit, press &lt;kbd&gt;Alt&lt;/kbd&gt; + &lt;kbd&gt;F4&lt;/kbd&gt;&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>Save: Press <kbd class="bg-gray-200 rounded px-1 border border-gray-400">Ctrl</kbd> + 
+                   <kbd class="bg-gray-200 rounded px-1 border border-gray-400">S</kbd></p>
+                <p>Undo: Press <kbd class="bg-gray-200 rounded px-1 border border-gray-400">Ctrl</kbd> + 
+                   <kbd class="bg-gray-200 rounded px-1 border border-gray-400">Z</kbd></p>
+                <p>To exit, press <kbd class="bg-gray-200 rounded px-1 border border-gray-400">Alt</kbd> + 
+                   <kbd class="bg-gray-200 rounded px-1 border border-gray-400">F4</kbd></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Label -->
+<div id="label" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;label&gt; tag defines a label for form elements.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (label tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Label Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form&gt;
+            &lt;label for="username"&gt;Username:&lt;/label&gt;
+            &lt;input type="text" id="username"&gt;&lt;br&gt;
+            
+            &lt;label&gt;
+                &lt;input type="checkbox"&gt; Remember me
+            &lt;/label&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <form class="space-y-4">
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" class="border rounded px-2 py-1 ml-2">
+                    </div>
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox"> Remember me
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Legend -->
+<div id="legend" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;legend&gt; tag defines a caption for a &lt;fieldset&gt; element.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (legend tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Legend Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;fieldset&gt;
+            &lt;legend&gt;User Details&lt;/legend&gt;
+            &lt;label for="name"&gt;Name:&lt;/label&gt;
+            &lt;input type="text" id="name"&gt;&lt;br&gt;
+            &lt;label for="age"&gt;Age:&lt;/label&gt;
+            &lt;input type="number" id="age"&gt;
+        &lt;/fieldset&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <fieldset class="border p-4 rounded">
+                    <legend class="px-2">User Details</legend>
+                    <div class="space-y-2">
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" class="border rounded px-2 py-1 ml-2">
+                        </div>
+                        <div>
+                            <label for="age">Age:</label>
+                            <input type="number" id="age" class="border rounded px-2 py-1 ml-2">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Link -->
+<div id="link" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;link&gt; tag defines relationships between the current document and external resources.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (link tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Link Example&lt;/title&gt;
+        &lt;link rel="stylesheet" href="styles.css"&gt;
+        &lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This page uses external CSS and has a favicon.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <p class="text-center">
+                    This page uses external CSS and has a favicon.<br>
+                    (Link effects are not visible directly)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Main -->
+<div id="main" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;main&gt; tag specifies the main content of a document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (main tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Main Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;Header content&lt;/header&gt;
+        &lt;main&gt;
+            &lt;h1&gt;Main Content&lt;/h1&gt;
+            &lt;p&gt;This is the main content area of the page.&lt;/p&gt;
+        &lt;/main&gt;
+        &lt;footer&gt;Footer content&lt;/footer&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <header class="w-full bg-gray-200 p-2 text-center">Header content</header>
+                <main class="w-full p-4">
+                    <h1 class="text-xl font-bold">Main Content</h1>
+                    <p>This is the main content area of the page.</p>
+                </main>
+                <footer class="w-full bg-gray-200 p-2 text-center">Footer content</footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Map -->
+<div id="map" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;map&gt; tag defines an image map with clickable areas.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (map tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Map Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;img src="workplace.jpg" alt="Workplace" 
+             usemap="#workmap" width="400" height="300"&gt;
+
+        &lt;map name="workmap"&gt;
+            &lt;area shape="rect" coords="34,44,270,350" 
+                  alt="Computer" href="computer.htm"&gt;
+            &lt;area shape="circle" coords="337,300,44" 
+                  alt="Coffee" href="coffee.htm"&gt;
+        &lt;/map&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="bg-gray-300 w-[400px] h-[300px] flex items-center justify-center">
+                    [Image with clickable areas would appear here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Mark -->
+<div id="mark" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;mark&gt; tag defines text that should be highlighted.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (mark tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Mark Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This is &lt;mark&gt;highlighted&lt;/mark&gt; text.&lt;/p&gt;
+        &lt;p&gt;Search results: The word 
+           &lt;mark&gt;example&lt;/mark&gt; was found.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>This is <mark class="bg-yellow-200 px-1">highlighted</mark> text.</p>
+                <p>Search results: The word <mark class="bg-yellow-200 px-1">example</mark> was found.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Meta -->
+<div id="meta" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;meta&gt; tag provides metadata about the HTML document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (meta tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="description" content="Example page"&gt;
+        &lt;meta name="keywords" content="HTML, CSS, JavaScript"&gt;
+        &lt;meta name="viewport" 
+              content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Meta Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Meta tags are not visible in the page content.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <p class="text-center">
+                    Meta tags are not visible in the page content.<br>
+                    (They provide information to browsers and search engines)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Meter -->
+<div id="meter" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;meter&gt; tag defines a scalar measurement within a known range.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (meter tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Meter Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;
+            Disk usage: &lt;meter value="0.6"&gt;60%&lt;/meter&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            Progress: &lt;meter value="0.8" min="0" max="1"&gt;
+                80%
+            &lt;/meter&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            Temperature: &lt;meter value="28" min="0" max="100" 
+                               low="20" high="80" optimum="25"&gt;
+                28 degrees
+            &lt;/meter&gt;
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>Disk usage: <meter value="0.6">60%</meter></p>
+                <p>Progress: <meter value="0.8" min="0" max="1">80%</meter></p>
+                <p>Temperature: <meter value="28" min="0" max="100" 
+                                     low="20" high="80" optimum="25">28 degrees</meter></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Nav -->
+<div id="nav" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;nav&gt; tag defines a set of navigation links.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (nav tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Navigation Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;nav class="main-nav"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <nav class="main-nav">
+                    <ul class="flex space-x-4">
+                        <li><a href="#home" class="text-blue-500 hover:underline">Home</a></li>
+                        <li><a href="#about" class="text-blue-500 hover:underline">About</a></li>
+                        <li><a href="#services" class="text-blue-500 hover:underline">Services</a></li>
+                        <li><a href="#contact" class="text-blue-500 hover:underline">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Noscript -->
+<div id="noscript" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-red-100 p-4">
+        <p class="text-sm font-semibold text-red-800">
+            The &lt;noscript&gt; tag defines alternate content for users who have disabled JavaScript.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (noscript tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Noscript Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script&gt;
+            document.write("JavaScript is enabled");
+        &lt;/script&gt;
+        &lt;noscript&gt;
+            Your browser does not support JavaScript!
+        &lt;/noscript&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <p>JavaScript is enabled<br>
+                   (Noscript content would show if JavaScript was disabled)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Object -->
+<div id="object" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;object&gt; tag defines an embedded object within an HTML document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (object tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Object Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;object
+            data="example.pdf"
+            type="application/pdf"
+            width="300"
+            height="200"&gt;
+            &lt;p&gt;Unable to display PDF file.&lt;/p&gt;
+        &lt;/object&gt;
+        
+        &lt;object
+            data="sample.svg"
+            type="image/svg+xml"
+            width="300"
+            height="200"&gt;
+            &lt;p&gt;Unable to display SVG file.&lt;/p&gt;
+        &lt;/object&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64 space-y-4">
+                <div class="border border-gray-300 w-[300px] h-[200px] flex items-center justify-center">
+                    [PDF Object Would Appear Here]
+                </div>
+                <div class="border border-gray-300 w-[300px] h-[200px] flex items-center justify-center">
+                    [SVG Object Would Appear Here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Ordered List -->
+<div id="ol" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;ol&gt; tag defines an ordered list.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (ol tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Ordered List Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;ol&gt;
+            &lt;li&gt;First item&lt;/li&gt;
+            &lt;li&gt;Second item&lt;/li&gt;
+            &lt;li&gt;Third item&lt;/li&gt;
+        &lt;/ol&gt;
+        
+        &lt;ol type="A"&gt;
+            &lt;li&gt;Item A&lt;/li&gt;
+            &lt;li&gt;Item B&lt;/li&gt;
+            &lt;li&gt;Item C&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <ol class="list-decimal list-inside mb-4">
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item</li>
+                </ol>
+                
+                <ol class="list-[upper-alpha] list-inside">
+                    <li>Item A</li>
+                    <li>Item B</li>
+                    <li>Item C</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Option Group -->
+<div id="optgroup" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;optgroup&gt; tag groups related options in a select list.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (optgroup tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Option Group Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;select&gt;
+            &lt;optgroup label="European Cars"&gt;
+                &lt;option value="volvo"&gt;Volvo&lt;/option&gt;
+                &lt;option value="mercedes"&gt;Mercedes&lt;/option&gt;
+                &lt;option value="audi"&gt;Audi&lt;/option&gt;
+            &lt;/optgroup&gt;
+            &lt;optgroup label="Asian Cars"&gt;
+                &lt;option value="toyota"&gt;Toyota&lt;/option&gt;
+                &lt;option value="honda"&gt;Honda&lt;/option&gt;
+                &lt;option value="nissan"&gt;Nissan&lt;/option&gt;
+            &lt;/optgroup&gt;
+        &lt;/select&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <select class="border rounded px-2 py-1">
+                    <optgroup label="European Cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </optgroup>
+                    <optgroup label="Asian Cars">
+                        <option value="toyota">Toyota</option>
+                        <option value="honda">Honda</option>
+                        <option value="nissan">Nissan</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Output -->
+<div id="output" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;output&gt; tag represents the result of a calculation or user action.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (output tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Output Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form oninput="result.value=parseInt(a.value)+parseInt(b.value)"&gt;
+            &lt;input type="number" id="a" value="0"&gt; +
+            &lt;input type="number" id="b" value="0"&gt; =
+            &lt;output name="result" for="a b"&gt;0&lt;/output&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <form class="flex items-center space-x-2" 
+                      oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+                    <input type="number" id="a" value="0" 
+                           class="border rounded w-20 px-2 py-1"> +
+                    <input type="number" id="b" value="0" 
+                           class="border rounded w-20 px-2 py-1"> =
+                    <output name="result" for="a b" 
+                            class="border rounded px-2 py-1 bg-white">0</output>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Paragraph -->
+<div id="p" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;p&gt; tag defines a paragraph.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (p tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Paragraph Example&lt;/title&gt;
+        &lt;style&gt;
+            .highlight { background-color: yellow; }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This is a simple paragraph.&lt;/p&gt;
+        &lt;p class="highlight"&gt;
+            This is a highlighted paragraph with some 
+            important information.
+        &lt;/p&gt;
+        &lt;p&gt;
+            Paragraphs can contain multiple lines
+            and they maintain proper spacing.
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>This is a simple paragraph.</p>
+                <p class="bg-yellow-200 p-2 my-2">
+                    This is a highlighted paragraph with some important information.
+                </p>
+                <p>
+                    Paragraphs can contain multiple lines<br>
+                    and they maintain proper spacing.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Parameter -->
+<div id="param" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;param&gt; tag defines parameters for plugins embedded with an object element.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (param tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Parameter Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;object data="movie.swf"&gt;
+            &lt;param name="autoplay" value="true"&gt;
+            &lt;param name="loop" value="false"&gt;
+            &lt;param name="quality" value="high"&gt;
+            Your browser doesn't support this object.
+        &lt;/object&gt;
+        
+        &lt;object data="video.mp4"&gt;
+            &lt;param name="controller" value="true"&gt;
+            &lt;param name="autostart" value="false"&gt;
+            Alternative content
+        &lt;/object&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <div class="border border-gray-300 p-4 mb-4 text-center">
+                    [Object with parameters would appear here]
+                </div>
+                <div class="border border-gray-300 p-4 text-center">
+                    [Video object with parameters would appear here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Picture -->
+<div id="picture" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;picture&gt; tag gives web developers more flexibility in specifying image resources.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (picture tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Picture Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;picture&gt;
+            &lt;source media="(min-width: 650px)" 
+                    srcset="img_large.jpg"&gt;
+            &lt;source media="(min-width: 465px)" 
+                    srcset="img_small.jpg"&gt;
+            &lt;img src="img_default.jpg" 
+                 alt="Default Image" 
+                 style="width:auto;"&gt;
+        &lt;/picture&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="bg-gray-300 w-[300px] h-[200px] flex items-center justify-center">
+                    [Responsive Image Would Display Here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Pre -->
+<div id="pre" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;pre&gt; tag defines preformatted text.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (pre tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Pre Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;pre&gt;
+    This text
+        maintains its
+            formatting
+                and spaces.
+
+    function example() {
+        console.log("Hello");
+    }
+        &lt;/pre&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <pre class="bg-white p-4 rounded shadow">
+    This text
+        maintains its
+            formatting
+                and spaces.
+
+    function example() {
+        console.log("Hello");
+    }
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Progress -->
+<div id="progress" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;progress&gt; tag represents the progress of a task.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (progress tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Progress Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;label for="task"&gt;Task progress:&lt;/label&gt;
+        &lt;progress id="task" value="70" max="100"&gt;
+            70%
+        &lt;/progress&gt;
+        
+        &lt;br&gt;&lt;br&gt;
+        
+        &lt;label for="download"&gt;Download progress:&lt;/label&gt;
+        &lt;progress id="download" value="0.3"&gt;
+            30%
+        &lt;/progress&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <div class="mb-4">
+                    <label for="task">Task progress:</label>
+                    <progress id="task" value="70" max="100" class="ml-2">70%</progress>
+                </div>
+                <div>
+                    <label for="download">Download progress:</label>
+                    <progress id="download" value="0.3" class="ml-2">30%</progress>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Quote -->
+<div id="q" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;q&gt; tag defines a short quotation.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (q tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Quote Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;The professor said: 
+           &lt;q&gt;Learning HTML is fun!&lt;/q&gt;&lt;/p&gt;
+        &lt;p&gt;According to Mozilla: 
+           &lt;q cite="https://www.mozilla.org/"&gt;
+           The Web is amazing!&lt;/q&gt;
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>The professor said: <q>Learning HTML is fun!</q></p>
+                <p>According to Mozilla: <q cite="https://www.mozilla.org/">The Web is amazing!</q></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Ruby -->
+<div id="ruby" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;ruby&gt; tag specifies a ruby annotation (for East Asian typography).
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (ruby tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Ruby Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;ruby&gt;
+            漢 &lt;rt&gt;かん&lt;/rt&gt;
+            字 &lt;rt&gt;じ&lt;/rt&gt;
+        &lt;/ruby&gt;
+        
+        &lt;ruby&gt;
+            明日 &lt;rt&gt;あした&lt;/rt&gt;
+        &lt;/ruby&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <div class="mb-4">
+                    <ruby>
+                        漢 <rt>かん</rt>
+                        字 <rt>じ</rt>
+                    </ruby>
+                </div>
+                <div>
+                    <ruby>
+                        明日 <rt>あした</rt>
+                    </ruby>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Sample Output -->
+<div id="samp" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;samp&gt; tag defines sample output from a computer program.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (samp tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Sample Output Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Message from computer:&lt;/p&gt;
+        &lt;samp&gt;
+            File not found.&lt;br&gt;
+            Press F1 to continue&lt;br&gt;
+            Press CTRL+ALT+DEL to restart
+        &lt;/samp&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>Message from computer:</p>
+                <samp class="font-mono bg-gray-200 p-2 rounded mt-2">
+                    File not found.<br>
+                    Press F1 to continue<br>
+                    Press CTRL+ALT+DEL to restart
+                </samp>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Script -->
+<div id="script" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;script&gt; tag is used to embed a client-side script (JavaScript).
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (script tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Script Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button onclick="showMessage()"&gt;Click me&lt;/button&gt;
+        
+        &lt;script&gt;
+            function showMessage() {
+                alert("Hello, World!");
+            }
+        &lt;/script&gt;
+        
+        &lt;!-- External Script --&gt;
+        &lt;script src="external.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Click me
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Section -->
+<div id="section" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;section&gt; tag defines a section in a document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (section tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Section Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Introduction&lt;/h2&gt;
+            &lt;p&gt;This is the introduction section.&lt;/p&gt;
+        &lt;/section&gt;
+        
+        &lt;section&gt;
+            &lt;h2&gt;Main Content&lt;/h2&gt;
+            &lt;p&gt;This is the main content section.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <section class="border p-4 rounded mb-4">
+                    <h2 class="text-xl font-bold">Introduction</h2>
+                    <p>This is the introduction section.</p>
+                </section>
+                
+                <section class="border p-4 rounded">
+                    <h2 class="text-xl font-bold">Main Content</h2>
+                    <p>This is the main content section.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Select -->
+<div id="select" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;select&gt; tag creates a drop-down list.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (select tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Select Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;label for="cars"&gt;Choose a car:&lt;/label&gt;
+        &lt;select id="cars" name="cars"&gt;
+            &lt;option value="volvo"&gt;Volvo&lt;/option&gt;
+            &lt;option value="saab"&gt;Saab&lt;/option&gt;
+            &lt;option value="mercedes"&gt;Mercedes&lt;/option&gt;
+            &lt;option value="audi"&gt;Audi&lt;/option&gt;
+        &lt;/select&gt;
+        
+        &lt;br&gt;&lt;br&gt;
+        
+        &lt;label for="colors"&gt;Choose colors (multiple):&lt;/label&gt;
+        &lt;select id="colors" name="colors" multiple&gt;
+            &lt;option value="red"&gt;Red&lt;/option&gt;
+            &lt;option value="green"&gt;Green&lt;/option&gt;
+            &lt;option value="blue"&gt;Blue&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <div class="mb-4">
+                    <label for="cars">Choose a car:</label>
+                    <select id="cars" name="cars" class="border rounded px-2 py-1 ml-2">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="colors">Choose colors (multiple):</label>
+                    <select id="colors" name="colors" multiple 
+                            class="border rounded px-2 py-1 ml-2">
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Small -->
+<div id="small" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;small&gt; tag defines smaller text.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (small tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Small Text Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This is normal text.&lt;/p&gt;
+        &lt;p&gt;&lt;small&gt;This is smaller text.&lt;/small&gt;&lt;/p&gt;
+        &lt;p&gt;Copyright &lt;small&gt;&copy; 2024&lt;/small&gt;&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>This is normal text.</p>
+                <p><small>This is smaller text.</small></p>
+                <p>Copyright <small>© 2024</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Source -->
+<div id="source" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;source&gt; tag specifies multiple media resources for media elements.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (source tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Source Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;video width="320" height="240" controls&gt;
+            &lt;source src="movie.mp4" type="video/mp4"&gt;
+            &lt;source src="movie.ogg" type="video/ogg"&gt;
+            Your browser does not support the video tag.
+        &lt;/video&gt;
+        
+        &lt;audio controls&gt;
+            &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+            &lt;source src="audio.ogg" type="audio/ogg"&gt;
+            Your browser does not support the audio tag.
+        &lt;/audio&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <div class="border border-gray-300 w-[320px] h-[240px] flex items-center justify-center mb-4">
+                    [Video Player Would Appear Here]
+                </div>
+                <div class="w-[320px] h-[40px] bg-gray-200 rounded flex items-center justify-center">
+                    [Audio Player Would Appear Here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Span -->
+<div id="span" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;span&gt; tag is an inline container for text.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (span tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Span Example&lt;/title&gt;
+        &lt;style&gt;
+            .highlight { color: red; }
+            .bold { font-weight: bold; }
+            .italic { font-style: italic; }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This is a paragraph with 
+           &lt;span class="highlight"&gt;highlighted&lt;/span&gt; text.&lt;/p&gt;
+        &lt;p&gt;Here's &lt;span class="bold"&gt;bold&lt;/span&gt; and 
+           &lt;span class="italic"&gt;italic&lt;/span&gt; text.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>This is a paragraph with <span class="text-red-500">highlighted</span> text.</p>
+                <p>Here's <span class="font-bold">bold</span> and 
+                   <span class="italic">italic</span> text.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Strong -->
+<div id="strong" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;strong&gt; tag defines text with strong importance.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (strong tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Strong Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This is &lt;strong&gt;very important&lt;/strong&gt; text.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; High voltage area.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>This is <strong>very important</strong> text.</p>
+                <p><strong>Warning:</strong> High voltage area.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Style -->
+<div id="style" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;style&gt; tag defines style information for a document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (style tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Style Example&lt;/title&gt;
+        &lt;style&gt;
+            .custom-text {
+                color: blue;
+                font-size: 20px;
+                margin: 10px;
+            }
+            .box {
+                border: 2px solid red;
+                padding: 15px;
+                background-color: #f0f0f0;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p class="custom-text"&gt;This text is styled.&lt;/p&gt;
+        &lt;div class="box"&gt;This is a styled box.&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p class="text-blue-500 text-xl my-2">This text is styled.</p>
+                <div class="border-2 border-red-500 p-4 bg-gray-100">
+                    This is a styled box.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Subscript -->
+<div id="sub" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;sub&gt; tag defines subscript text.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (sub tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Subscript Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O is the chemical formula for water.&lt;/p&gt;
+        &lt;p&gt;CO&lt;sub&gt;2&lt;/sub&gt; is carbon dioxide.&lt;/p&gt;
+        &lt;p&gt;The value of X&lt;sub&gt;n&lt;/sub&gt; is 5.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>H<sub>2</sub>O is the chemical formula for water.</p>
+                <p>CO<sub>2</sub> is carbon dioxide.</p>
+                <p>The value of X<sub>n</sub> is 5.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Summary -->
+<div id="summary" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;summary&gt; tag defines a visible heading for the &lt;details&gt; element.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (summary tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Summary Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;details&gt;
+            &lt;summary&gt;Click to show/hide details&lt;/summary&gt;
+            &lt;p&gt;This is the hidden content that can be 
+               shown or hidden.&lt;/p&gt;
+        &lt;/details&gt;
+        
+        &lt;details&gt;
+            &lt;summary&gt;FAQ Question 1&lt;/summary&gt;
+            &lt;p&gt;Here is the answer to FAQ Question 1.&lt;/p&gt;
+        &lt;/details&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <details class="w-full mb-4">
+                    <summary class="cursor-pointer">Click to show/hide details</summary>
+                    <p class="mt-2 pl-4">This is the hidden content that can be shown or hidden.</p>
+                </details>
+                
+                <details class="w-full">
+                    <summary class="cursor-pointer">FAQ Question 1</summary>
+                    <p class="mt-2 pl-4">Here is the answer to FAQ Question 1.</p>
+                </details>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Superscript -->
+<div id="sup" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;sup&gt; tag defines superscript text.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (sup tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Superscript Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;2&lt;sup&gt;3&lt;/sup&gt; equals 8.&lt;/p&gt;
+        &lt;p&gt;The 1&lt;sup&gt;st&lt;/sup&gt; place winner.&lt;/p&gt;
+        &lt;p&gt;E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>2<sup>3</sup> equals 8.</p>
+                <p>The 1<sup>st</sup> place winner.</p>
+                <p>E = mc<sup>2</sup></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Table -->
+<div id="table" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;table&gt; tag defines an HTML table.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (table tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Table Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;table border="1"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;Header 1&lt;/th&gt;
+                    &lt;th&gt;Header 2&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Row 1, Cell 1&lt;/td&gt;
+                    &lt;td&gt;Row 1, Cell 2&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Row 2, Cell 1&lt;/td&gt;
+                    &lt;td&gt;Row 2, Cell 2&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <table class="border-collapse border border-gray-400">
+                    <thead>
+                        <tr>
+                            <th class="border border-gray-400 px-4 py-2">Header 1</th>
+                            <th class="border border-gray-400 px-4 py-2">Header 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-400 px-4 py-2">Row 1, Cell 1</td>
+                            <td class="border border-gray-400 px-4 py-2">Row 1, Cell 2</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-400 px-4 py-2">Row 2, Cell 1</td>
+                            <td class="border border-gray-400 px-4 py-2">Row 2, Cell 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Template -->
+<div id="template" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;template&gt; tag holds content that will be hidden when the page loads.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (template tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Template Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button onclick="showContent()"&gt;Show Content&lt;/button&gt;
+
+        &lt;template id="myTemplate"&gt;
+            &lt;h2&gt;Hidden Content&lt;/h2&gt;
+            &lt;p&gt;This content is initially hidden.&lt;/p&gt;
+            &lt;img src="example.jpg" alt="Example Image"&gt;
+        &lt;/template&gt;
+
+        &lt;script&gt;
+            function showContent() {
+                let temp = document.getElementById("myTemplate");
+                let clon = temp.content.cloneNode(true);
+                document.body.appendChild(clon);
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Show Content
+                </button>
+                <!-- Template content would be hidden until activated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Table Body -->
+<div id="tbody" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;tbody&gt; tag groups the body content in an HTML table.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (tbody tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Table Body Example&lt;/title&gt;
+        &lt;style&gt;
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+            thead { background-color: #f0f0f0; }
+            tbody { background-color: #ffffff; }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;Month&lt;/th&gt;
+                    &lt;th&gt;Savings&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;January&lt;/td&gt;
+                    &lt;td&gt;USD 100&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;February&lt;/td&gt;
+                    &lt;td&gt;USD 150&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <table class="border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="border border-gray-400 px-4 py-2 bg-gray-200">Month</th>
+                            <th class="border border-gray-400 px-4 py-2 bg-gray-200">Savings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-400 px-4 py-2">January</td>
+                            <td class="border border-gray-400 px-4 py-2">USD 100</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-400 px-4 py-2">February</td>
+                            <td class="border border-gray-400 px-4 py-2">USD 150</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Table Data -->
+<div id="td" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;td&gt; tag defines a standard data cell in an HTML table.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (td tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Table Data Example&lt;/title&gt;
+        &lt;style&gt;
+            table, th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            .highlight {
+                background-color: #ffeb3b;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Regular cell&lt;/td&gt;
+                &lt;td class="highlight"&gt;Highlighted cell&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td colspan="2"&gt;Cell spanning two columns&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td rowspan="2"&gt;Cell spanning two rows&lt;/td&gt;
+                &lt;td&gt;Regular cell&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Last cell&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <table class="border-collapse">
+                    <tr>
+                        <td class="border border-gray-400 px-4 py-2">Regular cell</td>
+                        <td class="border border-gray-400 px-4 py-2 bg-yellow-200">Highlighted cell</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-400 px-4 py-2" colspan="2">Cell spanning two columns</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-400 px-4 py-2" rowspan="2">Cell spanning two rows</td>
+                        <td class="border border-gray-400 px-4 py-2">Regular cell</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-400 px-4 py-2">Last cell</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Textarea -->
+<div id="textarea" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;textarea&gt; tag defines a multi-line text input control.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (textarea tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Textarea Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;label for="message"&gt;Message:&lt;/label&gt;&lt;br&gt;
+        &lt;textarea id="message" name="message" 
+                  rows="4" cols="50" 
+                  placeholder="Enter your message here..."&gt;
+        &lt;/textarea&gt;
+        
+        &lt;br&gt;&lt;br&gt;
+        
+        &lt;label for="readonly"&gt;Read-only text:&lt;/label&gt;&lt;br&gt;
+        &lt;textarea id="readonly" name="readonly" 
+                  rows="2" cols="50" readonly&gt;
+            This text cannot be modified.
+        &lt;/textarea&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <div class="w-full mb-4">
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" cols="50" 
+                              class="w-full border rounded p-2" 
+                              placeholder="Enter your message here..."></textarea>
+                </div>
+                
+                <div class="w-full">
+                    <label for="readonly">Read-only text:</label><br>
+                    <textarea id="readonly" name="readonly" rows="2" cols="50" 
+                              class="w-full border rounded p-2 bg-gray-50" 
+                              readonly>This text cannot be modified.</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Table Footer -->
+<div id="tfoot" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;tfoot&gt; tag defines a footer content in an HTML table.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (tfoot tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Table Footer Example&lt;/title&gt;
+        &lt;style&gt;
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+            thead { background-color: #e0e0e0; }
+            tfoot { background-color: #f5f5f5; }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;Item&lt;/th&gt;
+                    &lt;th&gt;Cost&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Item 1&lt;/td&gt;
+                    &lt;td&gt;USD 100&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Item 2&lt;/td&gt;
+                    &lt;td&gt;USD 150&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+            &lt;tfoot&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;strong&gt;USD 250&lt;/strong&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tfoot&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <table class="border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="border border-gray-400 px-4 py-2 bg-gray-200">Item</th>
+                            <th class="border border-gray-400 px-4 py-2 bg-gray-200">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-400 px-4 py-2">Item 1</td>
+                            <td class="border border-gray-400 px-4 py-2">USD 100</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-400 px-4 py-2">Item 2</td>
+                            <td class="border border-gray-400 px-4 py-2">USD 150</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="bg-gray-100">
+                            <td class="border border-gray-400 px-4 py-2"><strong>Total</strong></td>
+                            <td class="border border-gray-400 px-4 py-2"><strong>USD 250</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Table Header -->
+<div id="th" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;th&gt; tag defines a header cell in an HTML table.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (th tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Table Header Example&lt;/title&gt;
+        &lt;style&gt;
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 8px;
+            }
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;Name&lt;/th&gt;
+                &lt;th scope="col"&gt;Age&lt;/th&gt;
+                &lt;th scope="col"&gt;City&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope="row"&gt;John&lt;/th&gt;
+                &lt;td&gt;25&lt;/td&gt;
+                &lt;td&gt;New York&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope="row"&gt;Jane&lt;/th&gt;
+                &lt;td&gt;30&lt;/td&gt;
+                &lt;td&gt;London&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <table class="border-collapse">
+                    <tr>
+                        <th scope="col" class="border border-gray-400 px-4 py-2 bg-green-500 text-white">Name</th>
+                        <th scope="col" class="border border-gray-400 px-4 py-2 bg-green-500 text-white">Age</th>
+                        <th scope="col" class="border border-gray-400 px-4 py-2 bg-green-500 text-white">City</th>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="border border-gray-400 px-4 py-2 bg-green-500 text-white">John</th>
+                        <td class="border border-gray-400 px-4 py-2">25</td>
+                        <td class="border border-gray-400 px-4 py-2">New York</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="border border-gray-400 px-4 py-2 bg-green-500 text-white">Jane</th>
+                        <td class="border border-gray-400 px-4 py-2">30</td>
+                        <td class="border border-gray-400 px-4 py-2">London</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Time -->
+<div id="time" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;time&gt; tag defines a specific time or datetime.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (time tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Time Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;The meeting is scheduled for 
+           &lt;time datetime="2024-12-28 22:54:24"&gt;
+           December 28, 2024 at 10:54 PM
+           &lt;/time&gt;
+        &lt;/p&gt;
+        
+        &lt;p&gt;Open hours: 
+           &lt;time&gt;10:00&lt;/time&gt; to &lt;time&gt;21:00&lt;/time&gt;
+        &lt;/p&gt;
+        
+        &lt;p&gt;Concert Date: 
+           &lt;time datetime="2024-12-31"&gt;New Year's Eve&lt;/time&gt;
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>The meeting is scheduled for 
+                   <time datetime="2024-12-28 22:54:24">
+                   December 28, 2024 at 10:54 PM</time>
+                </p>
+                
+                <p>Open hours: <time>10:00</time> to <time>21:00</time></p>
+                
+                <p>Concert Date: 
+                   <time datetime="2024-12-31">New Year's Eve</time>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Title -->
+<div id="title" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;title&gt; tag defines the title of the HTML document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (title tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;My First Webpage | Home&lt;/title&gt;
+        &lt;style&gt;
+            .browser-tab {
+                border: 1px solid #ccc;
+                padding: 5px 15px;
+                border-radius: 5px 5px 0 0;
+                background-color: #f8f9fa;
+                display: inline-block;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;The title appears in:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Browser tab&lt;/li&gt;
+            &lt;li&gt;Bookmarks&lt;/li&gt;
+            &lt;li&gt;Search engine results&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <div class="browser-tab mb-4 border border-gray-300 px-4 py-1 rounded-t bg-gray-50">
+                    My First Webpage | Home
+                </div>
+                <p>The title appears in:</p>
+                <ul class="list-disc pl-5">
+                    <li>Browser tab</li>
+                    <li>Bookmarks</li>
+                    <li>Search engine results</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Table Row -->
+<div id="tr" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;tr&gt; tag defines a row in an HTML table.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (tr tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Table Row Example&lt;/title&gt;
+        &lt;style&gt;
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 8px;
+            }
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+            tr:hover {
+                background-color: #ddd;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Product&lt;/th&gt;
+                &lt;th&gt;Price&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Apple&lt;/td&gt;
+                &lt;td&gt;USD 1.00&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Orange&lt;/td&gt;
+                &lt;td&gt;USD 0.80&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Banana&lt;/td&gt;
+                &lt;td&gt;USD 0.75&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <table class="border-collapse">
+                    <tr>
+                        <th class="border border-gray-400 px-4 py-2 bg-gray-200">Product</th>
+                        <th class="border border-gray-400 px-4 py-2 bg-gray-200">Price</th>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border border-gray-400 px-4 py-2">Apple</td>
+                        <td class="border border-gray-400 px-4 py-2">USD 1.00</td>
+                    </tr>
+                    <tr class="bg-gray-50 hover:bg-gray-200">
+                        <td class="border border-gray-400 px-4 py-2">Orange</td>
+                        <td class="border border-gray-400 px-4 py-2">USD 0.80</td>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border border-gray-400 px-4 py-2">Banana</td>
+                        <td class="border border-gray-400 px-4 py-2">USD 0.75</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Track -->
+<div id="track" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;track&gt; tag specifies text tracks for media elements.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (track tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Track Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;video width="320" height="240" controls&gt;
+            &lt;source src="movie.mp4" type="video/mp4"&gt;
+            &lt;track src="subtitles_en.vtt" 
+                   kind="subtitles" 
+                   srclang="en" 
+                   label="English"&gt;
+            &lt;track src="subtitles_es.vtt" 
+                   kind="subtitles" 
+                   srclang="es" 
+                   label="Spanish"&gt;
+        &lt;/video&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="bg-gray-300 w-[320px] h-[240px] flex items-center justify-center">
+                    [Video with Subtitles Would Appear Here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Underline -->
+<div id="u" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-blue-100 p-4">
+        <p class="text-sm font-semibold text-blue-800">
+            The &lt;u&gt; tag represents text that should be stylistically different from normal text.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (u tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Underline Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;This is &lt;u&gt;underlined&lt;/u&gt; text.&lt;/p&gt;
+        &lt;p&gt;The word &lt;u&gt;misspelled&lt;/u&gt; might be incorrect.&lt;/p&gt;
+        &lt;p&gt;This is a &lt;u class="proper-name"&gt;proper name&lt;/u&gt;.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>This is <u>underlined</u> text.</p>
+                <p>The word <u>misspelled</u> might be incorrect.</p>
+                <p>This is a <u class="proper-name">proper name</u>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Unordered List -->
+<div id="ul" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-green-100 p-4">
+        <p class="text-sm font-semibold text-green-800">
+            The &lt;ul&gt; tag defines an unordered (bulleted) list.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (ul tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Unordered List Example&lt;/title&gt;
+        &lt;style&gt;
+            .custom-list {
+                list-style-type: square;
+            }
+            .nested-list {
+                list-style-type: circle;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Coffee&lt;/li&gt;
+            &lt;li&gt;Tea&lt;/li&gt;
+            &lt;li&gt;Milk&lt;/li&gt;
+        &lt;/ul&gt;
+        
+        &lt;ul class="custom-list"&gt;
+            &lt;li&gt;First Item&lt;/li&gt;
+            &lt;li&gt;Second Item
+                &lt;ul class="nested-list"&gt;
+                    &lt;li&gt;Sub-item 1&lt;/li&gt;
+                    &lt;li&gt;Sub-item 2&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <ul class="list-disc mb-4">
+                    <li>Coffee</li>
+                    <li>Tea</li>
+                    <li>Milk</li>
+                </ul>
+                
+                <ul class="list-square">
+                    <li>First Item</li>
+                    <li>Second Item
+                        <ul class="list-circle ml-4">
+                            <li>Sub-item 1</li>
+                            <li>Sub-item 2</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Example Card for Variable -->
+<div id="var" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-yellow-100 p-4">
+        <p class="text-sm font-semibold text-yellow-800">
+            The &lt;var&gt; tag defines a variable in programming or a mathematical expression.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (var tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Variable Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;The area of a triangle is: 
+           &lt;var&gt;b&lt;/var&gt; × &lt;var&gt;h&lt;/var&gt; / 2&lt;/p&gt;
+        
+        &lt;p&gt;In the equation &lt;var&gt;E&lt;/var&gt; = 
+           &lt;var&gt;m&lt;/var&gt;&lt;var&gt;c&lt;/var&gt;&lt;sup&gt;2&lt;/sup&gt;, 
+           &lt;var&gt;c&lt;/var&gt; represents the speed of light.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64">
+                <p>The area of a triangle is: <var>b</var> × <var>h</var> / 2</p>
+                <p>In the equation <var>E</var> = <var>m</var><var>c</var><sup>2</sup>, 
+                   <var>c</var> represents the speed of light.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Video -->
+<div id="video" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-purple-100 p-4">
+        <p class="text-sm font-semibold text-purple-800">
+            The &lt;video&gt; tag embeds video content in a document.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (video tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Video Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;video width="320" height="240" controls autoplay muted&gt;
+            &lt;source src="movie.mp4" type="video/mp4"&gt;
+            &lt;source src="movie.ogg" type="video/ogg"&gt;
+            Your browser does not support the video tag.
+        &lt;/video&gt;
+        
+        &lt;video width="320" height="240" 
+               poster="thumbnail.jpg" controls&gt;
+            &lt;source src="video.webm" type="video/webm"&gt;
+            &lt;source src="video.mp4" type="video/mp4"&gt;
+            &lt;track src="subtitles.vtt" kind="subtitles" 
+                   srclang="en" label="English"&gt;
+            Your browser does not support the video tag.
+        &lt;/video&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex flex-col items-center justify-center h-64 space-y-4">
+                <div class="bg-gray-300 w-[320px] h-[240px] flex items-center justify-center">
+                    [Video Player 1 Would Appear Here]
+                </div>
+                <div class="bg-gray-300 w-[320px] h-[240px] flex items-center justify-center">
+                    [Video Player 2 Would Appear Here]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Example Card for Word Break Opportunity -->
+<div id="wbr" class="card bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+    <div class="bg-red-100 p-4">
+        <p class="text-sm font-semibold text-red-800">
+            The &lt;wbr&gt; tag defines a possible line-break point.
+        </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <!-- Code Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">PROGRAM (wbr tag):</h2>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Word Break Example&lt;/title&gt;
+        &lt;style&gt;
+            .narrow { width: 200px; border: 1px solid #000; }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="narrow"&gt;
+            &lt;p&gt;This is a very long word: 
+               super&lt;wbr&gt;cali&lt;wbr&gt;fragil&lt;wbr&gt;istic&lt;wbr&gt;
+               expiali&lt;wbr&gt;docious&lt;/p&gt;
+            
+            &lt;p&gt;A long URL: 
+               https://&lt;wbr&gt;really&lt;wbr&gt;long&lt;wbr&gt;
+               domain&lt;wbr&gt;name.com&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+        </div>
+        
+        <!-- Output Block -->
+        <div>
+            <h2 class="text-lg font-bold mb-2 text-gray-700">OUTPUT:</h2>
+            <div class="bg-gray-100 p-4 rounded-lg flex items-center justify-center h-64">
+                <div class="w-[200px] border border-black p-2">
+                    <p>This is a very long word: 
+                       super<wbr>cali<wbr>fragil<wbr>istic<wbr>expiali<wbr>docious</p>
+                    <p>A long URL: 
+                       https://<wbr>really<wbr>long<wbr>domain<wbr>name.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-4 mt-8 w-full">
+            <div class="container mx-auto text-center">
+                <p class="text-sm">© 2024 HTML-IN-MY-STYLE. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script>
+            // Navigation Handler
+            class NavigationHandler {
+                constructor() {
+                    this.sideNav = document.querySelector('.side-nav');
+                    this.navToggle = document.querySelector('.nav-toggle');
+                    this.body = document.body;
+                    this.isOpen = false;
+
+                    this.initialize();
+                }
+
+                initialize() {
+                    this.navToggle.addEventListener('click', () => this.toggleNav());
+                    // Additional initialization code...
+                }
+
+                toggleNav() {
+                    this.isOpen = !this.isOpen;
+                    this.sideNav.classList.toggle('open', this.isOpen);
+                    this.body.classList.toggle('nav-open', this.isOpen);
+                    // Additional toggle functionality...
+                }
+            }
+
+            // Initialize when DOM is loaded
+            document.addEventListener('DOMContentLoaded', () => {
+                new NavigationHandler();
+            });
+        </script>
+
+         <!-- Place this in your `<head>` section -->
+<script>
+    document.addEventListener("keydown", function (e) {
+      if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+        e.preventDefault();
+        alert("Haha, you got me! 😄");
+        window.location.href = "custom-message.html"; // Redirect to a custom page
+      }
+    });
+  </script>
+
+  <!-- Place this in your `<head>` section -->
+<script>
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      alert("Right-click is disabled! 😄");
+    });
+  </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Resources</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl font-bold text-center text-blue-600 mb-8">Learning Resources</h1>
+        
+        <div class="mb-8 text-center">
+            <input type="text" id="searchInput" placeholder="Search resources..." class="w-full max-w-md p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+        </div>
+
+        <div class="mb-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-between items-center p-4 bg-blue-600 text-white rounded-t-lg">
+                <h2 class="text-xl font-semibold">Notes</h2>
+                <button class="toggle-btn" data-section="notes"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="content p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="resource-card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-blue-600 text-lg font-semibold mb-2">Learning Web Design</h3>
+                    <p class="text-gray-600 mb-4">A comprehensive guide for beginners learning HTML, CSS, and JavaScript</p>
+                    <a href="https://drive.google.com/file/d/1LanWE1Kna-m3TMqpyL8WZrEPc7L8CThk/view?usp=drivesdk" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">DOWNLOAD PDF</a>
+                </div>
+                <div class="resource-card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-blue-600 text-lg font-semibold mb-2">HTML Short Notes</h3>
+                    <p class="text-gray-600 mb-4">Quick reference guide for HTML concepts</p>
+                    <a href="https://drive.google.com/file/d/1LcW7wI76iGLh_szxBOaVKtVk8VqvRJ8e/view?usp=drivesdk" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">DOWNLOAD PDF</a>
+                </div>
+                <div class="resource-card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-blue-600 text-lg font-semibold mb-2">Brilliant HTML and CSS</h3>
+                    <p class="text-gray-600 mb-4">Advanced concepts in HTML and CSS</p>
+                    <a href="https://drive.google.com/file/d/1LanWE1Kna-m3TMqpyL8WZrEPc7L8CThk/view?usp=drivesdk" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">DOWNLOAD PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-between items-center p-4 bg-blue-600 text-white rounded-t-lg">
+                <h2 class="text-xl font-semibold">Video Tutorials</h2>
+                <button class="toggle-btn" data-section="videos"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="content p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="resource-card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-blue-600 text-lg font-semibold mb-2">HTML Basics</h3>
+                    <p class="text-gray-600 mb-4">Fundamental concepts of HTML for beginners</p>
+                    <a href="https://youtu.be/mJgBOIoGihA?si=lo230dqlcXo5Czll" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">Watch Video</a>
+                </div>
+                <div class="resource-card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-blue-600 text-lg font-semibold mb-2">HTML Advanced</h3>
+                    <p class="text-gray-600 mb-4">Advanced HTML techniques and best practices</p>
+                    <a href="https://youtu.be/zutb5Clb_0Y?si=W1m0bLUF5x25_yU1" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">Watch Video</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-8 bg-white rounded-lg shadow-lg">
+            <div class="flex justify-between items-center p-4 bg-blue-600 text-white rounded-t-lg">
+                <h2 class="text-xl font-semibold">Certifications</h2>
+                <button class="toggle-btn" data-section="certifications"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="content p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="resource-card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-blue-600 text-lg font-semibold mb-2">SoloLearn HTML</h3>
+                    <p class="text-gray-600 mb-4">Free HTML certification course</p>
+                    <span class="badge bg-gray-200 text-gray-700 py-1 px-3 rounded-full mb-4 inline-block">Free</span>
+                    <a href="https://www.sololearn.com/en/learn/courses/html-introduction" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">Start Learning</a>
+                </div>
+                <div class="resource-card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-blue-600 text-lg font-semibold mb-2">Udemy HTML5 Mastery</h3>
+                    <p class="text-gray-600 mb-4">Comprehensive HTML5 certification course</p>
+                    <span class="badge bg-gray-200 text-gray-700 py-1 px-3 rounded-full mb-4 inline-block">Paid</span>
+                    <a href="https://www.udemy.com/course/mastering-html5-from-beginner-to-advanced/?couponCode=NEWYEARCAREER" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButtons = document.querySelectorAll('.toggle-btn');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const section = button.closest('.mb-8');
+                    const content = section.querySelector('.content');
+                    content.classList.toggle('hidden');
+                });
+            });
+
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const resourceCards = document.querySelectorAll('.resource-card');
+
+                resourceCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+                    card.style.display = isVisible ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+
+     <!-- Place this in your `<head>` section -->
+<script>
+    document.addEventListener("keydown", function (e) {
+      if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+        e.preventDefault();
+        alert("Haha, you got me! 😄");
+        window.location.href = "custom-message.html"; // Redirect to a custom page
+      }
+    });
+  </script>
+
+  <!-- Place this in your `<head>` section -->
+<script>
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      alert("HAHA YOU GOT ME 😄");
+      
+    });
+  </script>
+</body>
+</html>

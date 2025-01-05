@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Learning Platform</title>
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Modern Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Enhanced Color Scheme */
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #f8fafc;
+            --accent-color: #4f46e5;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --gradient-1: linear-gradient(135deg, #6366f1, #4f46e5);
+            --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-2: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Enhanced Navigation */
+        .nav-tabs {
+            background: var(--gradient-1);
+            padding: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-1);
+        }
+
+        .nav-tabs ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-tabs a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-tabs a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Modern Card Design */
+        .tab-content {
+            display: none;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-2);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Typography Enhancements */
+        h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: var(--gradient-1);
+    background-clip: text; /* Standard property */
+    -webkit-background-clip: text; /* Vendor-prefixed for older browsers */
+    color: transparent; /* Makes the text show the gradient background */
+}
+
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--accent-color);
+        }
+
+        /* Enhanced List Styling */
+        ul:not(.nav-tabs ul) {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        ul:not(.nav-tabs ul) li {
+            position: relative;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        ul:not(.nav-tabs ul) li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* Modern Code Snippet */
+        .code-snippet {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-snippet::before {
+            content: 'HTML';
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* Resource Cards */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-1);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .coming-soon img {
+            max-width: 400px;
+            margin: 2rem auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-2);
+        }
+
+        /* Interactive Elements */
+        .btn {
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-1);
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .nav-tabs ul {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .nav-tabs a {
+                justify-content: center;
+            }
+
+            .tab-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--secondary-color);
+            border-bottom-color: var(--primary-color);
+            border-radius: 50%;
+            display: inline-block;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <!-- Add this right after the existing link tags in the head section -->
+<style>
+    /* Theme Variables */
+    :root[data-theme="light"] {
+        --primary-color: #2563eb;
+        --secondary-color: #f8fafc;
+        --accent-color: #1e40af;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --bg-primary: #ffffff;
+        --bg-secondary: #f1f5f9;
+        --gradient-1: linear-gradient(135deg, #2563eb, #1e40af);
+        --code-bg: #1e293b;
+        --card-bg: #ffffff;
+    }
+
+    :root[data-theme="dark"] {
+        --primary-color: #3b82f6;
+        --secondary-color: #1e293b;
+        --accent-color: #60a5fa;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --gradient-1: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        --code-bg: #0f172a;
+        --card-bg: #1e293b;
+    }
+
+    /* Theme Toggle Styles */
+    .theme-toggle {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--gradient-1);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+        transform: scale(1.1);
+    }
+
+    .theme-toggle i {
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    /* Updated Body Styles */
+    body {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Updated Card Styles */
+    .tab-content {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
+    .resource-card {
+        background: var(--card-bg);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Updated Code Snippet Styles */
+    .code-snippet {
+        background: var(--code-bg);
+    }
+
+    /* Male-oriented Design Elements */
+    .tech-pattern {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(var(--accent-color) 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.05;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    /* Enhanced Button Styles */
+    .btn {
+        background: var(--gradient-1);
+        border: none;
+        padding: 1rem 2rem;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(255,255,255,0.2), transparent);
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .btn:hover::after {
+        transform: translateY(0);
+    }
+    </style>
+    <!-- Add this to your existing CSS styles -->
+<style>
+    /* Stylized Heading */
+    .brand-heading {
+        text-align: center;
+        padding: 2rem 0;
+        position: relative;
+        margin-bottom: 3rem;
+    }
+
+    .brand-heading h1 {
+        font-size: 3.5rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin: 0;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        display: inline-block;
+    }
+
+    .brand-heading h1::before {
+        content: "HTML IN MY STYLE";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--primary-color), transparent 70%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0.3;
+        animation: glitch 5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch {
+        0% {
+            transform: translate(0);
+        }
+        20% {
+            transform: translate(-2px, 2px);
+        }
+        40% {
+            transform: translate(-2px, -2px);
+        }
+        60% {
+            transform: translate(2px, 2px);
+        }
+        80% {
+            transform: translate(2px, -2px);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+
+    /* Copyright Section */
+    .footer {
+        background: var(--bg-primary);
+        padding: 2rem 0;
+        margin-top: 4rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .copyright {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .copyright-text {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .copyright-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .copyright-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .copyright-links a:hover {
+        color: var(--primary-color);
+    }
+
+    .copyright-badge {
+        background: var(--gradient-1);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 500;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .brand-heading h1 {
+            font-size: 2.5rem;
+        }
+
+        .copyright {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .copyright-links {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+    
+    </style>
+
+</head>
+<body>
+
+    
+    <!-- Enhanced Navigation -->
+    <nav class="nav-tabs">
+        
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="html.html"><i class="fas fa-code"></i> HTML</a></li>
+            <li><a href="RESOURCES.html"><i class="fas fa-book"></i> Resources</a></li>
+            <li><a href="none.html"><i class="fas fa-rocket"></i> Coming Soon</a></li>
+            
+            
+        </ul>
+    </nav>
+
+    <!-- Enhanced Home Tab -->
+    <div id="home" class="tab-content active">
+        <h1>Welcome to Modern Learning</h1>
+        <p class="lead">Embark on an exciting journey into web development with our cutting-edge learning platform.</p>
+        
+        <h2>Getting Started</h2>
+        <ul>
+           <b> <li>RULES :</li> </b>
+           <pre>
+
+            Certainly, here's a description format for your website's "Home" tab, focusing on presenting the rules:
+Home Tab Description:
+Welcome to [Modern learning platform]
+This website is dedicated to providing a comprehensive and engaging learning experience for [Target Audience, e.g., students, developers].
+Rules and Guidelines:
+ * [Rule 1]:
+   * [Detailed explanation of Rule 1, e.g., "Respectful and constructive communication is expected in all forums and comments."]
+ * [Rule 2]:
+   * [Detailed explanation of Rule 2, e.g., "Plagiarism is strictly prohibited. All submitted work must be original."]
+ * [Rule 3]:
+   * [Detailed explanation of Rule 3, e.g., "Use of this website for any illegal or harmful activities is strictly forbidden."]
+ * [Rule 4]:
+   * [Detailed explanation of Rule 4, e.g., "The website administrators reserve the right to remove any content that violates these rules."]
+[Optional: Add a brief introduction to the website's overall mission or values]
+[Optional: Include a call to action, e.g., "Explore the HTML tab to start learning!" or "Discover valuable resources in the Resources section."]
+Example:
+Home Tab Description:
+Welcome to "Modern learning platform"
+This website is designed to help you learn to code effectively and efficiently.
+Right click is disabled in this website.
+Rules and Guidelines:
+ * Respectful Communication: Engage in constructive and respectful discussions in the forums and comments sections.
+ * Academic Integrity: Plagiarism is strictly prohibited. All submitted code and projects must be your own original work.
+ * Acceptable Use: Use of this website for any illegal or harmful activities is strictly forbidden.
+ * Website Policies: The website administrators reserve the right to remove any content that violates these rules.
+At Modern learning platform, we believe in empowering individuals with the knowledge and skills to build amazing things with code.
+This format provides a clear and concise overview of the rules while maintaining a welcoming tone. You can adjust the specific rules 
+and descriptions to fit your website's unique purpose and target audience.
+I hope this helps! Let me know if you'd like help with descriptions for the other tabs as well.
+
+
+           </pre>
+        </ul>
+        
+        <button class="btn" onclick="redirectToPage()">Start Learning Now</button>
+
+<script>
+    function redirectToPage() {
+        window.location.href = "html.html";
+    }
+</script>
+
+<!-- Place this in your `<head>` section -->
+    <script>
+        document.addEventListener("keydown", function (e) {
+          if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+            e.preventDefault();
+            alert("Haha, you got me! 😄");
+            window.location.href = "custom-message.html"; // Redirect to a custom page
+          }
+        });
+      </script>
+      
+      <!-- Place this in your `<head>` section -->
+<script>
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      alert("Right-click is disabled! 😄");
+    });
+  </script>
+  
+
+    </div>
+
+  
+   
+    </script>
+    <!-- Add this right before the closing body tag -->
+<div class="tech-pattern"></div>
+
+<button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+</button>
+
+ 
+
+
+<script>
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    root.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        root.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+        icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    }
+
+    // Add smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add hover effect to cards
+    document.querySelectorAll('.resource-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.background = `
+                radial-gradient(
+                    circle at ${x}px ${y}px,
+                    rgba(255,255,255,0.1),
+                    transparent 40%
+                )
+                var(--card-bg)
+            `;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.background = 'var(--card-bg)';
+        });
+    });
+    </script>
+</body>
+</html>
