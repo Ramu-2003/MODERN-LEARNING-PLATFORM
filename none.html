@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon with Like Counter</title>
+    <title>Coming Soon with Terminal Loader</title>
     <style>
-                /* Terminal Loader Styles */
-                @keyframes blinkCursor {
+         /* Terminal Loader Styles */
+        @keyframes blinkCursor {
             50% { border-right-color: transparent; }
         }
 
@@ -14,17 +14,6 @@
             0%, 10% { width: 0; }
             45%, 55% { width: 10em; }
             90%, 100% { width: 0; }
-        }
-
-        @keyframes popEffect {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
         }
 
         body {
@@ -35,6 +24,14 @@
             min-height: 100vh;
             position: relative;
             padding-bottom: 100px; /* Space for like counter */
+        }
+
+        #time-display {
+            font-family: Comic Sans MS;
+            font-size: 20px;
+            margin: 20px;
+            text-align: center;
+            color: #333;
         }
 
         .coming-soon {
@@ -62,6 +59,42 @@
             box-sizing: border-box;
         }
 
+        .terminal-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1.5em;
+            background-color: #333;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            padding: 0 0.4em;
+            box-sizing: border-box;
+        }
+
+        .terminal-controls {
+            float: right;
+        }
+
+        .control {
+            display: inline-block;
+            width: 0.6em;
+            height: 0.6em;
+            margin-left: 0.4em;
+            border-radius: 50%;
+            background-color: #777;
+        }
+
+        .control.close { background-color: #e33; }
+        .control.minimize { background-color: #ee0; }
+        .control.maximize { background-color: #0b0; }
+
+        .terminal-title {
+            float: left;
+            line-height: 1.5em;
+            color: #eee;
+        }
+
         .text {
             display: inline-block;
             white-space: nowrap;
@@ -70,6 +103,59 @@
             animation: typeAndDelete 4s steps(11) infinite,
                        blinkCursor 1s step-end infinite alternate;
             margin-top: 1.5em;
+            font-family: Comic Sans MS;
+        }
+
+        /* Like Counter Styles */
+        .like-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .like-btn {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .like-btn:hover {
+            transform: scale(1.05);
+            background-color: #006d8f;
+        }
+
+        .like-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .like-counter {
+            font-size: 18px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .message {
+            color: #666;
+            font-size: 14px;
+            font-family: Comic Sans MS;
         }
         .like-container {
             position: fixed;
@@ -102,7 +188,7 @@
         .like-button span {
             font-size: 16px;
         }
-    </style>
+</style>
 </head>
 <body>
     <div class="coming-soon">
@@ -111,62 +197,85 @@
         <img src="https://i.pinimg.com/736x/9c/cd/b4/9ccdb48cfe6779dd7452d1b9714a2bf4.jpg" alt="Under Construction" class="coming-soon-img">
         
         <div class="terminal-loader">
+            <div class="terminal-header">
+                <div class="terminal-title">Status</div>
+                <div class="terminal-controls">
+                    <div class="control close"></div>
+                    <div class="control minimize"></div>
+                    <div class="control maximize"></div>
+                </div>
+            </div>
             <div class="text">LOADING... </div>
             <div class="text">COMING SOON ! </div>
         </div>
     </div>
+    <!-- Like and View Count -->
     <div class="like-container">
-        <button class="like-button" id="like-button" onclick="handleLike()">
+        <p>Views: <span id="view-count">0</span></p>
+        <button class="like-button" onclick="handleLike()">
             ❤️ Like <span id="like-count">0</span>
         </button>
     </div>
 
     <script>
         const likeCountElement = document.getElementById("like-count");
-const likeButton = document.getElementById("like-button");
+        const viewCountElement = document.getElementById("view-count");
+        const likeButton = document.querySelector(".like-button");
 
-// Fetch like data from the backend
-async function fetchLikeData() {
-    try {
-        const response = await fetch('http://localhost:3000/likes'); // Backend URL
-        const data = await response.json();
-        likeCountElement.textContent = data.count;
+        // Function to fetch data from backend
+        async function fetchData() {
+            try {
+                const response = await fetch('http://localhost:3000/data'); // Replace with your backend endpoint
+                const data = await response.json();
 
-        // Disable button if already liked
-        if (localStorage.getItem('hasLiked') === 'true') {
-            likeButton.classList.add('disabled');
-            likeButton.disabled = true;
+                // Update the like and view counts
+                likeCountElement.textContent = data.likes;
+                viewCountElement.textContent = data.views;
+
+                // Disable like button if already liked
+                if (data.hasLiked) {
+                    likeButton.classList.add('disabled');
+                    likeButton.disabled = true;
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
         }
-    } catch (error) {
-        console.error('Error fetching like data:', error);
-    }
-}
 
-// Handle like click
-async function handleLike() {
-    if (localStorage.getItem('hasLiked') === 'true') return;
+        // Handle like button click
+        async function handleLike() {
+            try {
+                const response = await fetch('http://localhost:3000/like', { method: 'POST' });
+                if (response.ok) {
+                    const data = await response.json();
+                    likeCountElement.textContent = data.likes;
 
-    try {
-        const response = await fetch('http://localhost:3000/like', { method: 'POST' });
-        if (response.ok) {
-            const data = await response.json();
-            likeCountElement.textContent = data.count;
-
-            // Store "liked" state locally
-            localStorage.setItem('hasLiked', 'true');
-            likeButton.classList.add('disabled');
-            likeButton.disabled = true;
-        } else {
-            const error = await response.json();
-            alert(error.message);
+                    // Disable button after liking
+                    likeButton.classList.add('disabled');
+                    likeButton.disabled = true;
+                } else {
+                    const error = await response.json();
+                    alert(error.message);
+                }
+            } catch (error) {
+                console.error('Error liking:', error);
+            }
         }
-    } catch (error) {
-        console.error('Error liking:', error);
-    }
-}
 
-// Initialize the page
-fetchLikeData();
+        // Increment views on page load
+        async function incrementViews() {
+            try {
+                const response = await fetch('http://localhost:3000/view', { method: 'POST' });
+                const data = await response.json();
+                viewCountElement.textContent = data.views;
+            } catch (error) {
+                console.error('Error incrementing views:', error);
+            }
+        }
+
+        // Initialize the page
+        fetchData();
+        incrementViews();
     </script>
 </body>
 </html>
