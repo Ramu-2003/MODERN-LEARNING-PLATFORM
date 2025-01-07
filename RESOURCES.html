@@ -8,8 +8,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
         body {
             font-family: 'Roboto', sans-serif;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #2563eb; /* Darker blue */
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .toggle-btn:hover {
+            transform: rotate(180deg);
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0px 0px 5px rgba(59, 130, 246, 0.5);
         }
     </style>
 </head>
@@ -18,7 +48,7 @@
         <h1 class="text-4xl font-bold text-center text-blue-600 mb-8">Learning Resources</h1>
         
         <div class="mb-8 text-center">
-            <input type="text" id="searchInput" placeholder="Search resources..." class="w-full max-w-md p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+            <input type="text" id="searchInput" placeholder="Search resources..." class="w-full max-w-md p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="mb-8 bg-white rounded-lg shadow-lg">
@@ -53,7 +83,8 @@
             <div class="content p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="resource-card bg-white p-4 rounded-lg shadow-md">
                     <h3 class="text-blue-600 text-lg font-semibold mb-2">HTML Basics</h3>
-                    <p class="text-gray-600 mb-4">Fundamental concepts of HTML for beginners</p <a href="https://youtu.be/mJgBOIoGihA?si=lo230dqlcXo5Czll" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">Watch Video</a>
+                    <p class="text-gray-600 mb-4">Fundamental concepts of HTML for beginners</p>
+                    <a href="https://youtu.be/mJgBOIoGihA?si=lo230dqlcXo5Czll" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg" target="_blank">Watch Video</a>
                 </div>
                 <div class="resource-card bg-white p-4 rounded-lg shadow-md">
                     <h3 class="text-blue-600 text-lg font-semibold mb-2">HTML Advanced</h3>
