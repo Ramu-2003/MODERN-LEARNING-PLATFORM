@@ -18,16 +18,24 @@ const getClientIp = (req) =>
 // Endpoint to fetch data
 app.get("/data", (req, res) => {
     const ip = getClientIp(req);
+
+    // Ensure user interactions object is initialized
+    if (!userInteractions[ip]) {
+        userInteractions[ip] = { liked: false, viewed: false };
+    }
+
     res.json({
         likes,
         views,
-        hasLiked: !!userInteractions[ip]?.liked,
+        hasLiked: userInteractions[ip].liked,
     });
 });
 
 // Endpoint to handle likes
 app.post("/like", (req, res) => {
     const ip = getClientIp(req);
+
+    // Check if the user has already liked
     if (userInteractions[ip]?.liked) {
         return res.status(400).json({ message: "You have already liked." });
     }
@@ -41,6 +49,7 @@ app.post("/like", (req, res) => {
 app.post("/view", (req, res) => {
     const ip = getClientIp(req);
 
+    // Increment views only if the user hasn't viewed before
     if (!userInteractions[ip]?.viewed) {
         views++;
         userInteractions[ip] = { ...userInteractions[ip], viewed: true };
