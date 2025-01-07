@@ -223,24 +223,52 @@
         const likeButton = document.querySelector(".like-button");
 
         // Function to fetch data from backend
-        async function fetchData() {
-            try {
-                const response = await fetch('http://localhost:3000/data'); // Replace with your backend endpoint
-                const data = await response.json();
+       async function fetchData() {
+    try {
+        const response = await fetch("http://localhost:3001/data");
+        const data = await response.json();
 
-                // Update the like and view counts
-                likeCountElement.textContent = data.likes;
-                viewCountElement.textContent = data.views;
+        document.getElementById("likes").textContent = `Likes: ${data.likes}`;
+        document.getElementById("views").textContent = `Views: ${data.views}`;
 
-                // Disable like button if already liked
-                if (data.hasLiked) {
-                    likeButton.classList.add('disabled');
-                    likeButton.disabled = true;
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+        if (data.hasLiked) {
+            document.getElementById("likeButton").disabled = true;
+            document.getElementById("likeButton").textContent = "Liked!";
         }
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+async function handleLike() {
+    try {
+        const response = await fetch("http://localhost:3001/like", {
+            method: "POST",
+        });
+        const data = await response.json();
+        fetchData(); // Refresh the data after a like
+    } catch (error) {
+        console.error("Error liking:", error);
+    }
+}
+
+async function handleView() {
+    try {
+        const response = await fetch("http://localhost:3001/view", {
+            method: "POST",
+        });
+        const data = await response.json();
+        fetchData(); // Refresh the data after a view
+    } catch (error) {
+        console.error("Error viewing:", error);
+    }
+}
+
+// Fetch data on page load
+window.onload = function () {
+    fetchData();
+    handleView(); // Increment views on page load
+};
 
         // Handle like button click
         async function handleLike() {
