@@ -4403,20 +4403,32 @@ pre, code {
 
          <!-- Place this in your `<head>` section -->
 <script>
-    document.addEventListener("keydown", function (e) {
-      if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
-        e.preventDefault();
-        alert("Haha, you got me! 😄");
-        window.location.href = "custom-message.html"; // Redirect to a custom page
-      }
+    // Disable right-click
+    document.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      alert("You are really talented!");
     });
-  </script>
 
-  <!-- Place this in your `<head>` section -->
-<script>
-    document.addEventListener("contextmenu", function (e) {
-      e.preventDefault();
-      alert("Right-click is disabled! 😄");
+    // Disable specific key combinations
+    document.addEventListener("keydown", (event) => {
+      const forbiddenKeys = [
+        { ctrl: true, key: "u" }, // Ctrl + U
+        { ctrl: true, shift: true, key: "i" }, // Ctrl + Shift + I
+        { ctrl: true, shift: true, key: "j" }, // Ctrl + Shift + J
+        { ctrl: true, key: "s" }, // Ctrl + S
+        { ctrl: true, key: "h" }, // Ctrl + H
+        { ctrl: true, key: "a" }, // Ctrl + A
+        { ctrl: true, key: "p" }, // Ctrl + P
+      ];
+
+      if (forbiddenKeys.some(k => 
+          event.ctrlKey === k.ctrl && 
+          event.shiftKey === (k.shift || false) &&
+          event.key.toLowerCase() === k.key
+      )) {
+        event.preventDefault();
+        alert("You are really talented!");
+      }
     });
   </script>
 
