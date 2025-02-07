@@ -1,130 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon with Terminal Loader</title>
+    <title>Tech in My Style - Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-         /* Terminal Loader Styles */
-        @keyframes blinkCursor {
-            50% { border-right-color: transparent; }
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
         }
 
-        @keyframes typeAndDelete {
-            0%, 10% { width: 0; }
-            45%, 55% { width: 10em; }
-            90%, 100% { width: 0; }
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+
+        .tooltip {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease-in-out;
+        }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Comic Sans MS;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f3f4f6;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-text p {
+            color: #9ca3af;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .social-icon-wrapper {
             position: relative;
-            padding-bottom: 100px; /* Space for like counter */
         }
 
-        #time-display {
-            font-family: Comic Sans MS;
-            font-size: 20px;
-            margin: 20px;
-            text-align: center;
-            color: #333;
+        .social-icon {
+            display: block;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s;
+            color: white;
         }
 
-        .coming-soon {
-            margin-top: 50px;
+        .social-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            display: block;
         }
 
-        .coming-soon-img {
-            width: 400px;
-            margin: 40px 0;
-        }
-
-        .terminal-loader {
-            border: 0.1em solid #333;
-            background-color: #1a1a1a;
-            color: #0f0;
-            font-family: Comic Sans MS;
-            font-size: 1em;
-            padding: 1.5em 1em;
-            width: 12em;
-            margin: 20px auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .terminal-header {
+        .social-icon-label {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1.5em;
-            background-color: #333;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            padding: 0 0.4em;
-            box-sizing: border-box;
-        }
-
-        .terminal-controls {
-            float: right;
-        }
-
-        .control {
-            display: inline-block;
-            width: 0.6em;
-            height: 0.6em;
-            margin-left: 0.4em;
-            border-radius: 50%;
-            background-color: #777;
-        }
-
-        .control.close { background-color: #e33; }
-        .control.minimize { background-color: #ee0; }
-        .control.maximize { background-color: #0b0; }
-
-        .terminal-title {
-            float: left;
-            line-height: 1.5em;
-            color: #eee;
-        }
-
-        .text {
-            display: inline-block;
+            top: -2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
             white-space: nowrap;
-            overflow: hidden;
-            border-right: 0.2em solid green;
-            animation: typeAndDelete 4s steps(11) infinite,
-                       blinkCursor 1s step-end infinite alternate;
-            margin-top: 1.5em;
-            font-family: Comic Sans MS;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
         }
-</style>
+
+        .copyright {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            padding-top: 1rem;
+            border-top: 1px solid #374151;
+        }
+
+
+        /* Instagram */
+        .social-icon-wrapper:nth-child(1) .social-icon:hover {
+            background-color: #db2777;
+        }
+
+        .social-icon-wrapper:nth-child(1) .social-icon-label {
+            background-color: #db2777;
+        }
+
+        /* YouTube */
+        .social-icon-wrapper:nth-child(2) .social-icon:hover {
+            background-color: #dc2626;
+        }
+
+        .social-icon-wrapper:nth-child(2) .social-icon-label {
+            background-color: #dc2626;
+        }
+
+        /* Telegram */
+        .social-icon-wrapper:nth-child(3) .social-icon:hover {
+            background-color: #2563eb;
+        }
+
+        .social-icon-wrapper:nth-child(3) .social-icon-label {
+            background-color: #2563eb;
+        }
+
+        .social-icon:hover+.social-icon-label {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-text {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+
 </head>
-<body>
-    <div class="coming-soon">
-        <h1>Exciting Features Coming Soon!</h1>
-        <p>We're crafting something amazing for you.</p>
-        <img src="https://i.pinimg.com/736x/9c/cd/b4/9ccdb48cfe6779dd7452d1b9714a2bf4.jpg" alt="Under Construction" class="coming-soon-img">
-        
-        <div class="terminal-loader">
-            <div class="terminal-header">
-                <div class="terminal-title">Status</div>
-                <div class="terminal-controls">
-                    <div class="control close"></div>
-                    <div class="control minimize"></div>
-                    <div class="control maximize"></div>
+
+<body class="min-h-screen bg-gray-100 flex flex-col">
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Exciting Features Coming Soon!</h1>
+            <p class="text-lg text-gray-600 mb-8">The Tech in My Style team is crafting something amazing—stay tuned for
+                the best update yet!</p>
+
+            <!-- Dates -->
+            <div class="flex justify-center gap-8 mb-8">
+                <div class="text-sm text-gray-500">
+                    <span class="font-semibold">Created:</span> December 2024
+                </div>
+                <div class="text-sm text-gray-500">
+                    <span class="font-semibold">NEXT UPDATE:</span> April 2025
                 </div>
             </div>
-            <div class="text">LOADING... </div>
-            <div class="text">COMING SOON ! </div>
+
+            <!-- Centered Image -->
+            <div class="flex justify-center items-center w-full">
+                <img src="https://i.pinimg.com/736x/9c/cd/b4/9ccdb48cfe6779dd7452d1b9714a2bf4.jpg" alt="Under Construction" class="w-64 md:w-80 lg:w-96 rounded-lg shadow-lg">
+            </div>
+
+            <!-- Terminal Loader -->
+            <div class="bg-gray-900 rounded-lg shadow-xl w-full max-w-md mx-auto p-4 mt-8 relative overflow-hidden">
+                <div class="flex items-center justify-between mb-4 border-b border-gray-700 pb-2">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polyline points="4 17 10 11 4 5"></polyline>
+                            <line x1="12" y1="19" x2="20" y2="19"></line>
+                        </svg>
+                        <span class="text-gray-300">Status</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                </div>
+                <div class="text-green-400 font-mono text-center">
+                    <div class="animate-pulse">LOADING...</div>
+                    <div class="animate-bounce mt-2">COMING SOON !</div>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
+    <!--footer-->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <h3>HTML IN MY STYLE</h3>
+                    <p>Learn all the tech content in my style</p>
+                </div>
+                <div class="social-icons">
+                    <div class="social-icon-wrapper">
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+                        <span class="social-icon-label">Instagram</span>
+                    </div>
+                    <div class="social-icon-wrapper">
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                            </svg>
+                        </a>
+                        <span class="social-icon-label">YouTube</span>
+                    </div>
+                    <div class="social-icon-wrapper">
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 2L11 13" />
+                                <path d="M22 2L15 22L11 13L2 9L22 2z" />
+                            </svg>
+                        </a>
+                        <span class="social-icon-label">Telegram</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <footer>
+        <!-- Copyright Notice -->
+        <div class="copyright">
+            <p>&copy; <script>
+                    document.write(new Date().getFullYear())
+                </script> HTML-IN-MY-STYLE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
+
 </html>
